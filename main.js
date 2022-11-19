@@ -3,12 +3,9 @@ function getComputerChoice() {
   let compChoice = choice[Math.floor(Math.random() * choice.length)];
   return compChoice;
 }
-let playerWinner = 0,
-  compWinner = 0,
-  resultPlayer = 0,
-  resultComp = 0;
-
-let output;
+let resultPlayer = 0,
+  resultComp = 0,
+  output;
 function playRound(playerSelection, computerSelection) {
   playerSelection = prompt("Rock, paper or scissors?");
   if (
@@ -23,7 +20,7 @@ function playRound(playerSelection, computerSelection) {
         computerSelection === "Paper") ||
       (playerSelection.toLowerCase() == "paper" && computerSelection === "Rock")
     ) {
-      resultPlayer = playerWinner + 1;
+      resultPlayer++;
       output = alert(
         `You win this one! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`
       );
@@ -35,7 +32,7 @@ function playRound(playerSelection, computerSelection) {
         computerSelection === "Scissors") ||
       (playerSelection.toLowerCase() == "rock" && computerSelection === "Paper")
     ) {
-      resultComp = compWinner + 1;
+      resultComp++;
       output = alert(
         `You lost this one! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`
       );
@@ -43,7 +40,9 @@ function playRound(playerSelection, computerSelection) {
     } else if (
       playerSelection.toLowerCase() === computerSelection.toLowerCase()
     ) {
-      output = alert("Tie");
+      output = alert(
+        `Tie. You both picked ${computerSelection}. Score: ${resultPlayer}:${resultComp}`
+      );
       return output;
     } else {
       output = alert("Wrong input!");
@@ -54,12 +53,29 @@ function playRound(playerSelection, computerSelection) {
     return output;
   }
 }
+
 const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
-console.log(playerSelection);
-console.log(playRound(playerSelection, computerSelection));
+let computerSelection = getComputerChoice();
 
+function updateComputerChoice() {
+  computerSelection = getComputerChoice();
+  return computerSelection;
+}
 
+function game() {
+  for (let i = 0; i < 5; i++) {
+    updateComputerChoice();
+    playRound(playerSelection, computerSelection);
+  }
+  if (resultComp > resultPlayer) {
+    output = alert("The computer wins the game!");
+    return output;
+  } else if (resultComp < resultPlayer) {
+    output = alert("You're the winner of this game!");
+    return output;
+  } else {
+    output = alert("Wow! You're as smart as a computer! Tie.");
+  }
+}
 
-
+console.log(game());

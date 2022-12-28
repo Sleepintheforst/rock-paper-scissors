@@ -9,9 +9,9 @@ let resultPlayer = 0,
 function playRound(playerSelection, computerSelection) {
   updateComputerChoice();
   if (
-    (playerSelection == "Rock" && computerSelection === "Scissors") ||
-    (playerSelection == "Scissors" && computerSelection === "Paper") ||
-    (playerSelection == "Paper" && computerSelection === "Rock")
+    (playerSelection === "Rock" && computerSelection === "Scissors") ||
+    (playerSelection === "Scissors" && computerSelection === "Paper") ||
+    (playerSelection === "Paper" && computerSelection === "Rock")
   ) {
     if (resultPlayer === 4) {
       resultPlayer++;
@@ -23,9 +23,9 @@ function playRound(playerSelection, computerSelection) {
       return resultsDiv;
     }
   } else if (
-    (playerSelection == "Scissors" && computerSelection === "Rock") ||
-    (playerSelection == "Paper" && computerSelection === "Scissors") ||
-    (playerSelection == "Rock" && computerSelection === "Paper")
+    (playerSelection === "Scissors" && computerSelection === "Rock") ||
+    (playerSelection === "Paper" && computerSelection === "Scissors") ||
+    (playerSelection === "Rock" && computerSelection === "Paper")
   ) {
     if (resultComp === 4) {
       resultComp++;
@@ -53,21 +53,18 @@ function updateComputerChoice() {
 const rockBtn = document.querySelector("#rock");
 rockBtn.addEventListener("click", () => {
   playerSelection = "Rock";
-  console.log(computerSelection);
   playRound(playerSelection, computerSelection);
 });
 
 const paperBtn = document.querySelector("#paper");
 paperBtn.addEventListener("click", () => {
   playerSelection = "Paper";
-  console.log(computerSelection);
   playRound(playerSelection, computerSelection);
 });
 
 const scissorsBtn = document.querySelector("#scissors");
 scissorsBtn.addEventListener("click", () => {
   playerSelection = "Scissors";
-  console.log(computerSelection);
   playRound(playerSelection, computerSelection);
 });
 

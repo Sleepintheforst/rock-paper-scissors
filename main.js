@@ -1,4 +1,4 @@
-let choice = ["Rock", "Paper", "Scissors"];
+let choice = ["rock", "paper", "scissors"];
 function getComputerChoice() {
   let compChoice = choice[Math.floor(Math.random() * choice.length)];
   return compChoice;
@@ -7,54 +7,54 @@ let resultPlayer = 0,
   resultComp = 0,
   output;
 function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt("Rock, paper or scissors?");
+  /*playerSelection = prompt("Rock, paper or scissors?");
   if (
     playerSelection.toLowerCase() === "rock" ||
     playerSelection.toLowerCase() === "paper" ||
     playerSelection.toLowerCase() === "scissors"
+  ) {*/
+  if (
+    (playerSelection == "rock" &&
+      computerSelection === "scissors") ||
+    (playerSelection == "scissors" &&
+      computerSelection === "paper") ||
+    (playerSelection == "paper" && computerSelection === "rock")
   ) {
-    if (
-      (playerSelection.toLowerCase() == "rock" &&
-        computerSelection === "Scissors") ||
-      (playerSelection.toLowerCase() == "scissors" &&
-        computerSelection === "Paper") ||
-      (playerSelection.toLowerCase() == "paper" && computerSelection === "Rock")
-    ) {
-      resultPlayer++;
-      output = alert(
-        `You win this one! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`
-      );
-      return output;
-    } else if (
-      (playerSelection.toLowerCase() == "scissors" &&
-        computerSelection === "Rock") ||
-      (playerSelection.toLowerCase() == "paper" &&
-        computerSelection === "Scissors") ||
-      (playerSelection.toLowerCase() == "rock" && computerSelection === "Paper")
-    ) {
-      resultComp++;
-      output = alert(
-        `You lost this one! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`
-      );
-      return output;
-    } else if (
-      playerSelection.toLowerCase() === computerSelection.toLowerCase()
-    ) {
-      output = alert(
-        `Tie. You both picked ${computerSelection}. Score: ${resultPlayer}:${resultComp}`
-      );
-      return output;
-    } else {
+    resultPlayer++;
+    output = alert(
+      `You win this one! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`
+    );
+    return output;
+  } else if (
+    (playerSelection == "scissors" &&
+      computerSelection === "rock") ||
+    (playerSelection == "paper" &&
+      computerSelection === "scissors") ||
+    (playerSelection == "rock" && computerSelection === "paper")
+  ) {
+    resultComp++;
+    output = alert(
+      `You lost this one! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`
+    );
+    return output;
+  } else if (
+    playerSelection === computerSelection
+  ) {
+    output = alert(
+      `Tie. You both picked ${computerSelection}. Score: ${resultPlayer}:${resultComp}`
+    );
+    return output;
+    } /*else {
       output = alert("Wrong input!");
       return output;
     }
   } else {
     output = alert("Wrong input!");
     return output;
-  }
+  }*/
 }
 
-const playerSelection = "rock";
+let playerSelection;
 let computerSelection = getComputerChoice();
 
 function updateComputerChoice() {
@@ -62,7 +62,7 @@ function updateComputerChoice() {
   return computerSelection;
 }
 
-function game() {
+/*function game() {
   for (let i = 0; i < 5; i++) {
     updateComputerChoice();
     playRound(playerSelection, computerSelection);
@@ -78,4 +78,25 @@ function game() {
   }
 }
 
-console.log(game());
+console.log(game());*/
+
+const rockBtn = document.querySelector("#rock");
+rockBtn.addEventListener("click", () => {
+  playerSelection = "rock";
+  playRound(playerSelection, computerSelection);
+  console.log(computerSelection);
+});
+
+const paperBtn = document.querySelector("#paper");
+paperBtn.addEventListener("click", () => {
+  playerSelection = "paper";
+  playRound(playerSelection, computerSelection);
+  console.log(computerSelection);
+});
+
+const scissorsBtn = document.querySelector("#scissors");
+scissorsBtn.addEventListener("click", () => {
+  playerSelection = "scissors";
+  playRound(playerSelection, computerSelection);
+  console.log(computerSelection);
+});

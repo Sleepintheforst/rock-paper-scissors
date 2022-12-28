@@ -7,7 +7,6 @@ let resultPlayer = 0,
   resultComp = 0;
 
 function playRound(playerSelection, computerSelection) {
-  //updateComputerChoice();
   if (
     (playerSelection === "Rock" && computerSelection === "Scissors") ||
     (playerSelection === "Scissors" && computerSelection === "Paper") ||

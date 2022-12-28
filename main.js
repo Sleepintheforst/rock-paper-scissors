@@ -14,37 +14,31 @@ function playRound(playerSelection, computerSelection) {
     playerSelection.toLowerCase() === "scissors"
   ) {*/
   if (
-    (playerSelection == "rock" &&
-      computerSelection === "scissors") ||
-    (playerSelection == "scissors" &&
-      computerSelection === "paper") ||
+    (playerSelection == "rock" && computerSelection === "scissors") ||
+    (playerSelection == "scissors" && computerSelection === "paper") ||
     (playerSelection == "paper" && computerSelection === "rock")
   ) {
     resultPlayer++;
-    output = alert(
-      `You win this one! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`
-    );
-    return output;
+    //output = alert(
+    resultsDiv.textContent = `You win this one! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`;
+    //);
+    return resultsDiv;
   } else if (
-    (playerSelection == "scissors" &&
-      computerSelection === "rock") ||
-    (playerSelection == "paper" &&
-      computerSelection === "scissors") ||
+    (playerSelection == "scissors" && computerSelection === "rock") ||
+    (playerSelection == "paper" && computerSelection === "scissors") ||
     (playerSelection == "rock" && computerSelection === "paper")
   ) {
     resultComp++;
-    output = alert(
-      `You lost this one! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`
-    );
+    //output = alert(
+    resultsDiv.textContent = `You lost this one! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`;
+    //);
+    return resultsDiv;
+  } else if (playerSelection === computerSelection) {
+    //output = alert(
+    resultsDiv.textContent = `Tie. You both picked ${computerSelection}. Score: ${resultPlayer}:${resultComp}`;
+    //);
     return output;
-  } else if (
-    playerSelection === computerSelection
-  ) {
-    output = alert(
-      `Tie. You both picked ${computerSelection}. Score: ${resultPlayer}:${resultComp}`
-    );
-    return output;
-    } /*else {
+  } /*else {
       output = alert("Wrong input!");
       return output;
     }
@@ -100,3 +94,5 @@ scissorsBtn.addEventListener("click", () => {
   playRound(playerSelection, computerSelection);
   console.log(computerSelection);
 });
+
+const resultsDiv = document.querySelector("#results");

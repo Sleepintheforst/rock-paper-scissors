@@ -4,48 +4,42 @@ function getComputerChoice() {
   return compChoice;
 }
 let resultPlayer = 0,
-  resultComp = 0,
-  output;
+  resultComp = 0;
+
 function playRound(playerSelection, computerSelection) {
-  /*playerSelection = prompt("Rock, paper or scissors?");
-  if (
-    playerSelection.toLowerCase() === "rock" ||
-    playerSelection.toLowerCase() === "paper" ||
-    playerSelection.toLowerCase() === "scissors"
-  ) {*/
+  updateComputerChoice();
   if (
     (playerSelection == "rock" && computerSelection === "scissors") ||
     (playerSelection == "scissors" && computerSelection === "paper") ||
     (playerSelection == "paper" && computerSelection === "rock")
   ) {
-    resultPlayer++;
-    //output = alert(
-    resultsDiv.textContent = `You win this one! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`;
-    //);
-    return resultsDiv;
+    if (resultPlayer === 4) {
+      resultPlayer++;
+      resultsDiv.textContent = `You win this round! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`;
+      finalResultDiv.textContent = "You're the winner of this game!";
+    } else {
+      resultPlayer++;
+      resultsDiv.textContent = `You win this round! ${playerSelection} beats ${computerSelection}! Good fight! Score: ${resultPlayer}:${resultComp}`;
+      return resultsDiv;
+    }
   } else if (
     (playerSelection == "scissors" && computerSelection === "rock") ||
     (playerSelection == "paper" && computerSelection === "scissors") ||
     (playerSelection == "rock" && computerSelection === "paper")
   ) {
-    resultComp++;
-    //output = alert(
-    resultsDiv.textContent = `You lost this one! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`;
-    //);
-    return resultsDiv;
-  } else if (playerSelection === computerSelection) {
-    //output = alert(
-    resultsDiv.textContent = `Tie. You both picked ${computerSelection}. Score: ${resultPlayer}:${resultComp}`;
-    //);
-    return output;
-  } /*else {
-      output = alert("Wrong input!");
-      return output;
+    if (resultComp === 4) {
+      resultComp++;
+      resultsDiv.textContent = `You lost this round! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`;
+      finalResultDiv.textContent = "The computer wins the game!";
+    } else {
+      resultComp++;
+      resultsDiv.textContent = `You lost this round! ${computerSelection} beats ${playerSelection}! Fight harder! Score: ${resultPlayer}:${resultComp}`;
+      return resultsDiv;
     }
-  } else {
-    output = alert("Wrong input!");
-    return output;
-  }*/
+  } else if (playerSelection === computerSelection) {
+    resultsDiv.textContent = `Tie. You both picked ${computerSelection}. Score: ${resultPlayer}:${resultComp}`;
+    return resultsDiv;
+  }
 }
 
 let playerSelection;
@@ -56,43 +50,35 @@ function updateComputerChoice() {
   return computerSelection;
 }
 
-/*function game() {
-  for (let i = 0; i < 5; i++) {
-    updateComputerChoice();
-    playRound(playerSelection, computerSelection);
-  }
-  if (resultComp > resultPlayer) {
-    output = alert("The computer wins the game!");
-    return output;
-  } else if (resultComp < resultPlayer) {
-    output = alert("You're the winner of this game!");
-    return output;
-  } else {
-    output = alert("Wow! You're as smart as a computer! Tie.");
-  }
-}
-
-console.log(game());*/
-
 const rockBtn = document.querySelector("#rock");
 rockBtn.addEventListener("click", () => {
   playerSelection = "rock";
-  playRound(playerSelection, computerSelection);
   console.log(computerSelection);
+  playRound(playerSelection, computerSelection);
 });
 
 const paperBtn = document.querySelector("#paper");
 paperBtn.addEventListener("click", () => {
   playerSelection = "paper";
-  playRound(playerSelection, computerSelection);
   console.log(computerSelection);
+  playRound(playerSelection, computerSelection);
 });
 
 const scissorsBtn = document.querySelector("#scissors");
 scissorsBtn.addEventListener("click", () => {
   playerSelection = "scissors";
-  playRound(playerSelection, computerSelection);
   console.log(computerSelection);
+  playRound(playerSelection, computerSelection);
 });
 
 const resultsDiv = document.querySelector("#results");
+
+const finalResultDiv = document.querySelector("#finalResult");
+
+const resetBtn = document.querySelector("#reset");
+resetBtn.addEventListener("click", () => {
+  resultPlayer = 0;
+  resultComp = 0;
+  resultsDiv.textContent = "";
+  finalResultDiv.textContent = "";
+});

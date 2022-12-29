@@ -17,6 +17,10 @@ function playRound(playerSelection, computerSelection) {
       resultPlayer++;
       resultsDiv.textContent = `You win this round! ${playerSelection} beats ${computerSelection.toLowerCase()}! Good fight! Score: ${resultPlayer}:${resultComp}`;
       finalResultDiv.textContent = "You're the winner of this game!";
+      rockBtn.disabled = true;
+      paperBtn.disabled = true;
+      scissorsBtn.disabled = true;
+      finalResultDiv.style.display = "flex";
     } else {
       resultPlayer++;
       resultsDiv.textContent = `You win this round! ${playerSelection} beats ${computerSelection.toLowerCase()}! Good fight! Score: ${resultPlayer}:${resultComp}`;
@@ -31,6 +35,10 @@ function playRound(playerSelection, computerSelection) {
       resultComp++;
       resultsDiv.textContent = `You lost this round! ${computerSelection} beats ${playerSelection.toLowerCase()}! Fight harder! Score: ${resultPlayer}:${resultComp}`;
       finalResultDiv.textContent = "The computer wins the game!";
+      rockBtn.disabled = true;
+      paperBtn.disabled = true;
+      scissorsBtn.disabled = true;
+      finalResultDiv.style.display = "flex";
     } else {
       resultComp++;
       resultsDiv.textContent = `You lost this round! ${computerSelection} beats ${playerSelection.toLowerCase()}! Fight harder! Score: ${resultPlayer}:${resultComp}`;
@@ -71,6 +79,7 @@ scissorsBtn.addEventListener("click", () => {
 const resultsDiv = document.querySelector("#results");
 
 const finalResultDiv = document.querySelector("#finalResult");
+finalResultDiv.style.display = "none";
 
 const resetBtn = document.querySelector("#reset");
 resetBtn.addEventListener("click", () => {
@@ -78,4 +87,9 @@ resetBtn.addEventListener("click", () => {
   resultComp = 0;
   resultsDiv.textContent = "";
   finalResultDiv.textContent = "";
+  rockBtn.disabled = false;
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
+  finalResultDiv.style.display = "none";
 });
+

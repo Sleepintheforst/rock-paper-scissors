@@ -7,13 +7,14 @@
   display: flex;
   gap: 50px;
   margin: 32px;
+  margin-bottom: 54px;
 }
 
 #rock,
 #paper,
 #scissors,
 #reset {
-  font-size: 24px;
+  font-size: 28px;
   border-radius: 12px;
   background-color: #eb9c5c;
   color: #3b3c36;
@@ -26,9 +27,43 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 32px;
+  font-size: 38px;
   background-image: url("./images/paper-rock-scissors.jpg");
   color: #996888;
   font-weight: bold;
   min-height: 100vh;
+}
+
+#finalResult{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 54px;
+  font-size: 54px;
+  height: 200px;
+  width: 800px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  -webkit-animation: animate_bg 1.7s;
+  animation: animate_bg 1.7s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;;
+}
+
+@keyframes animate_bg {
+  0%   {background: #f1abb9;}
+  50%  {background:#ffe74c;}
+  100% {background:#c6f91f;}
+}
+
+@keyframes animate_bg {
+  0%   {background:#f1abb9;}
+  50%  {background:#ffe74c;}
+  100% {background:#c6f91f;}
+}
+
+@-webkit-keyframes animate_bg {
+  0%   {background:#f1abb9;}
+  50%  {background:#ffe74c;}
+  100% {background:#c6f91f;}
 }

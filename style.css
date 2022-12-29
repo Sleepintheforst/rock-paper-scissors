@@ -8,6 +8,7 @@
   gap: 50px;
   margin: 32px;
   margin-bottom: 54px;
+  flex-wrap: wrap;
 }
 
 #rock,
@@ -22,7 +23,7 @@
   padding: 6px;
 }
 
-body {
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
